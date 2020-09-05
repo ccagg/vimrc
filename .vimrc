@@ -1,5 +1,6 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
+set visualbell t_vb=
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -30,6 +31,8 @@ Plugin 'vim-scripts/YankRing.vim'
 Plugin 'tpope/vim-surround'
 "括号引号自动补齐
 "Plugin 'jiangmiao/auto-pairs'
+"彩虹括号
+Plugin 'kien/rainbow_parentheses.vim'
 "用YCM来实现自动补全功能
 Plugin 'ycm-core/YouCompleteMe'
 
@@ -83,6 +86,32 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 1
 
+"rainbowParenthese配置
+let g:rbpt_colorpairs = [
+    \ ['brown',       'RoyalBlue3'],
+    \ ['Darkblue',    'SeaGreen3'],
+    \ ['darkgray',    'DarkOrchid3'],
+    \ ['darkgreen',   'firebrick3'],
+    \ ['darkcyan',    'RoyalBlue3'],
+    \ ['darkred',     'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['brown',       'firebrick3'],
+    \ ['gray',        'RoyalBlue3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['Darkblue',    'firebrick3'],
+    \ ['darkgreen',   'RoyalBlue3'],
+    \ ['darkcyan',    'SeaGreen3'],
+    \ ['darkred',     'DarkOrchid3'],
+    \ ['red',         'firebrick3'],
+    \ ]
+
+let g:rbpt_max = 16
+let g:rbpt_loadcmd_toggle = 0
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
+
 " turn off pymode's rope.
 " use jedi-vim completion code.
 "let g:pymode_repo = 0
@@ -93,3 +122,4 @@ let g:ycm_seed_identifiers_with_syntax = 1
 let g:ycm_semantic_triggers = {
 	\ 'python':['re!\w{2}'],
 	\ }
+
